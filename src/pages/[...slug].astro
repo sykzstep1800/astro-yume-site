@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import SsLayout from '../layouts/SsLayout.astro';
+
+export async function getStaticPaths() {
+  const ssList = await getCollection('ss');
+  
+  // パス生成
+  return ssList.map(ss => ({
+    params: { slug: ss.slug },
+    props: {ss}
+  }));
+}
+
+const {ss} = Astro.props;
+---
+
+<SsLayout title={ss.data.title} body={ss.body} oc={ss.data.OCSetting}/>

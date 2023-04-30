@@ -1,0 +1,23 @@
+---
+const { title,body,oc } = Astro.props
+import BaseComponent from "./BaseComponent.astro"
+import TextNameChange from "../components/namechange";
+
+
+---
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>{title}</title>
+    </head>
+    <body>
+      <BaseComponent />
+        <div class="bg-white py-6 sm:py-8 lg:py-12">
+          <div class="mx-auto max-w-screen-md px-4 md:px-8 text-gray-900" >
+            <h1 class="mb-4 text-center text-2xl font-bold text-gray-900 sm:text-2xl md:mb-6">{title}</h1>
+                  <TextNameChange mainContent={body} ocSettingName={oc} client:idle/>
+          </div>
+        </div>
+
+    </body>
+    </html>
